@@ -1,0 +1,166 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  font-size: 62.5%;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #2b8dbb;
+    border-radius: 50px;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: #2384b1;
+  }
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.6rem;
+}
+
+header {
+  background: #2572ee;
+  width: 100%;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 1px 5px 0 #22222275;
+  z-index: 5;
+
+  .wrapper {
+    width: 100%;
+    max-width: 1080px;
+
+    h1 {
+      color: #fff;
+      font-size: 3rem;
+    }
+  }
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  margin-top: 8rem;
+  height: calc(100vh - 8rem);
+  background: #2572ee25;
+  background-image: linear-gradient(to right bottom, #2572ee69, #2572ee15);
+  overflow-y: scroll;
+
+  .container {
+    width: 100%;
+    max-width: 1080px;
+    margin: 2rem 1rem;
+    
+    ul {
+      display: flex;
+      width: 100%;
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+      grid-gap: 2rem;
+      
+      li {
+        border-radius: 0.4rem;
+        box-shadow: 0.3rem 0.2rem 0.8rem -2px #0000006c;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 1rem;
+        transition: 0.18s;
+        min-height: 16rem;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        span {
+          font-size: 1.8rem;
+          font-weight: bold;
+          color: #222;
+          text-transform: capitalize;
+        }
+
+        p {
+          font-size: 1.6rem;
+          color: #333131;
+        }
+
+        &.normal {
+          background-image: linear-gradient(to top right, #d8d8d8, #949494);
+        }
+
+        &.grass {
+          background-image: linear-gradient(to top right, #8ffae1, #29af90);
+        }
+
+        &.fire {
+          background-image: linear-gradient(to top right, #ffa7a7, #f03d3d);
+        }
+
+        &.water {
+          background-image: linear-gradient(to top right, #c6e4ff, #74b8f3);
+        }
+
+        &.fairy {
+          background-image: linear-gradient(to top right, #ffc2fc, #ff00f2);
+        }
+
+        &.bug {
+          background-image: linear-gradient(to top right, #d9ff9c, #85c027);
+        }
+
+        &.ground {
+          background-image: linear-gradient(to top right, #ffe8b4, #bba061);
+        }
+
+        &.poison {
+          background-image: linear-gradient(to top right, #f09ae1, #a44eeb);
+        }
+
+        &.electric {
+          background-image: linear-gradient(to top right, #feffae, #fbec1f);
+        }
+
+        &.psychic {
+          background-image: linear-gradient(to top right, #ffb1b1, #5b5bf6);
+        }
+        
+        &.ghost {
+          background-image: linear-gradient(to top right, #ffffff, #e0e0e0);
+        }
+        
+        &.rock {
+          background-image: linear-gradient(to top right, #959595, #575757);
+        }
+        
+        &.fighting {
+          background-image: linear-gradient(to top right, #99ffe9, #27817d);
+        }
+
+        &.ice {
+          background-image: linear-gradient(to top right, #cbf9fd, #5bc5f6);
+        }
+
+        &.dragon {
+          background-image: linear-gradient(to top right, #ffadad, #5dff65);
+        }
+      }
+    }
+  }
+}
