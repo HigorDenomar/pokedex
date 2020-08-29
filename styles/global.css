@@ -66,6 +66,7 @@ main .container ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   grid-gap: 2rem;
+  padding-bottom: 2rem;
 }
 main .container ul li {
   border-radius: 0.4rem;
