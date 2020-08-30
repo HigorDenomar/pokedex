@@ -1,3 +1,6 @@
+let allPokemons;
+let filter = '';
+
 const html = {
   create: (tag) => document.createElement(tag),
   get: (tag) => document.querySelector(tag),
@@ -7,15 +10,11 @@ const get = {
   url: (id) => `https://pokeapi.co/api/v2/pokemon/${id}`,
 }
 
-const ul = html.get("ul");
-
-
 const getAllPokemons = () => Array(150).fill().map((_, index) => {
   return fetch(get.url(index + 1)).then(response => response.json());
 });
 
 const pokemonPromises = getAllPokemons();
-
 
 function getPokemon(pokemons) {
   const listPokemons = pokemons.map(pokemon => {
@@ -30,54 +29,75 @@ function getPokemon(pokemons) {
     });
   });
 
-  return listPokemons;
+  allPokemons = listPokemons;
 }
 
-function render(pokemons) {
-  pokemons.forEach((pokemon, id) => {
-    let li = html.create('li');
-    let img = html.create('img');
-    img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id+1}.png`;
-    
-    li.classList.add(pokemon.types[0]);
+function render() {
+  allPokemons.forEach((pokemon, id) => {
+    if(pokemon.types.indexOf(filter) != -1 || filter == '') {
+      let ul = html.get("ul");
+      let li = html.create('li');
+      let img = html.create('img');
+      img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id+1}.png`;
+      
+      li.classList.add(pokemon.types[0]);
 
-    let span = html.create('span');
-    span.innerHTML = pokemon.name;
+      let span = html.create('span');
+      span.innerHTML = pokemon.name;
 
-    let type = html.create('p');
-    type.innerHTML = pokemon.types.join(' | ');
+      let type = html.create('p');
+      type.innerHTML = pokemon.types.join(' | ');
+      
+      ul.append(li);
+      li.append(img);
+      img.after(span);
+      span.after(type);
+    }
+  });
+}
 
-    
-    ul.append(li);
-    li.append(img);
-    img.after(span)
-    span.after(type)
+function getOptions() {
+  let options = [];
+  
+  allPokemons.map(pokemon => {
+    pokemon.types.map(type => {
+      if(options.indexOf(type) === -1)
+        options.push(type);
+    })
+  });
 
+  let select = html.get("select#pokemon");
+
+  options.map(type => {
+    let option = html.create("option");
+    option.value = type;
+    option.innerHTML = type;
+
+    select.append(option);
   });
 }
 
 function init() {
   Promise.all(pokemonPromises)
     .then(response => {
-      const pokemon = getPokemon(response);
-      render(pokemon);
+      getPokemon(response);
+      render();
+      getOptions();
     })
     .catch(err => {
       alert('Ocorreu um erro inesperado :/\nTente novamente!');
       console.error(err);
     });
+  
+
+  // filter pokémons
+  html.get("select#pokemon")
+  .addEventListener("change", (event) => {
+    filter = event.target.value;
+    let ul = html.get("ul");
+    ul.innerHTML = '';
+    render();
+  });
 }
 
 init();
-
-
-
-
-
-
-
-// for(let i = 1; i < 150; i++) {
-//   let img = document.createElement('img');
-//   img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`;
-//   ul.append(img);
-// }

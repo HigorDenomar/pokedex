@@ -39,10 +39,30 @@ header {
 header .wrapper {
   width: 100%;
   max-width: 1080px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 header .wrapper h1 {
   color: #fff;
   font-size: 3rem;
+}
+header .wrapper select {
+  width: 100%;
+  max-width: 20rem;
+  height: 3.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #666;
+  padding: 0 1rem;
+  border-radius: 0.4rem;
+  border: 0;
+  text-transform: capitalize;
+  outline: none;
+}
+header .wrapper select option {
+  font-size: 1.3rem;
 }
 
 main {
