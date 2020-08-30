@@ -1,9 +1,17 @@
+:root {
+  // colors
+  --color-primary: #2572ee;
+  
+  // sizes
+  --header-height: 7rem;
+
+  font-size: 62.5%;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-
-  font-size: 62.5%;
 
   &::-webkit-scrollbar {
     width: 10px;
@@ -29,15 +37,17 @@ body {
 }
 
 header {
-  background: #2572ee;
   width: 100%;
-  height: 8rem;
+  height: var(--header-height);
+  
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
+  
+  background: var(--color-primary);
   box-shadow: 0 1px 5px 0 #22222275;
   z-index: 5;
 
@@ -45,6 +55,8 @@ header {
     width: 100%;
     max-width: 1080px;
     height: 100%;
+    margin: 0 1rem;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -58,13 +70,15 @@ header {
       width: 100%;
       max-width: 20rem;
       height: 3.5rem;
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: #666;
       padding: 0 1rem;
       border-radius: 0.4rem;
-      border: 0;
+      
+      font-size: 1.3rem;
+      font-weight: bold;
       text-transform: capitalize;
+      color: #666;
+      
+      border: 0;
       outline: none;
 
       option {
@@ -77,9 +91,8 @@ header {
 main {
   display: flex;
   justify-content: center;
-  margin-top: 8rem;
-  height: calc(100vh - 8rem);
-  background: #2572ee25;
+  margin-top: var(--header-height);
+  height: calc(100vh - var(--header-height));
   background-image: linear-gradient(to right bottom, #2572ee69, #2572ee15);
   overflow-y: scroll;
 
@@ -89,34 +102,36 @@ main {
     margin: 2rem 1rem;
     
     ul {
-      display: flex;
       width: 100%;
       list-style: none;
+      padding-bottom: 2rem;
+
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
       grid-gap: 2rem;
-      padding-bottom: 2rem;
       
       li {
-        border-radius: 0.4rem;
-        box-shadow: 0.3rem 0.2rem 0.8rem -2px #0000006c;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding-bottom: 1rem;
-        transition: 0.18s;
+
         min-height: 16rem;
+        padding-bottom: 1rem;
+        border-radius: 0.4rem;
+
+        box-shadow: 0.3rem 0.2rem 0.8rem -2px #0000006c;
+        transition: 0.18s;
 
         &:hover {
           transform: translateY(-5px);
         }
 
         span {
+          text-transform: capitalize;
           font-size: 1.8rem;
           font-weight: bold;
           color: #222;
-          text-transform: capitalize;
         }
 
         p {
