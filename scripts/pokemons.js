@@ -1,22 +1,17 @@
 let allPokemons;
 let filter = '';
+const maxPokemons = 150;
 
 const html = {
   create: (tag) => document.createElement(tag),
   get: (tag) => document.querySelector(tag),
 }
 
-const get = {
-  url: (id) => `https://pokeapi.co/api/v2/pokemon/${id}`,
-}
-
-const getAllPokemons = () => Array(150).fill().map((_, index) => {
-  return fetch(get.url(index + 1)).then(response => response.json());
+const getPokemonPromises = () => Array(maxPokemons).fill().map((_, index) => {
+  return fetch(`https://pokeapi.co/api/v2/pokemon/${index + 1}`).then(response => response.json());
 });
 
-const pokemonPromises = getAllPokemons();
-
-function getPokemon(pokemons) {
+function getPokemonData(pokemons) {
   const listPokemons = pokemons.map(pokemon => {
     let name = pokemon.forms[0].name;
     let img = pokemon.sprites.front_default;
@@ -32,6 +27,7 @@ function getPokemon(pokemons) {
   allPokemons = listPokemons;
 }
 
+// shows pokémons on the screen
 function render() {
   allPokemons.forEach((pokemon, id) => {
     if(pokemon.types.indexOf(filter) != -1 || filter == '') {
@@ -56,6 +52,7 @@ function render() {
   });
 }
 
+// get all types of pokémons and add as select option
 function getOptions() {
   let options = [];
   
@@ -78,9 +75,12 @@ function getOptions() {
 }
 
 function init() {
+  const pokemonPromises = getPokemonPromises();
+
+  // resolving promises
   Promise.all(pokemonPromises)
     .then(response => {
-      getPokemon(response);
+      getPokemonData(response);
       render();
       getOptions();
     })
@@ -88,7 +88,6 @@ function init() {
       alert('Ocorreu um erro inesperado :/\nTente novamente!');
       console.error(err);
     });
-  
 
   // filter pokémons
   html.get("select#pokemon")
