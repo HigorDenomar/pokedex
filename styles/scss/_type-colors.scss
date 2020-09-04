@@ -1,0 +1,63 @@
+@mixin background($color, $color2) {
+  background-image: linear-gradient(to top right, $color, $color2);
+}
+
+.normal {
+  @include background(#d8d8d8, #949494);
+}
+
+.grass {
+  @include background(#8ffae1, #29af90);
+}
+
+.fire {
+  @include background(#ffa7a7, #f03d3d);
+}
+
+.water {
+  @include background(#c6e4ff, #74b8f3);
+}
+
+.fairy {
+  @include background(#ffc2fc, #ff00f2);
+}
+
+.bug {
+  @include background(#d9ff9c, #85c027);
+}
+
+.ground {
+  @include background(#ffe8b4, #bba061);
+}
+
+.poison {
+  @include background(#f09ae1, #a44eeb);
+}
+
+.electric {
+  @include background(#feffae, #fbec1f);
+}
+
+.psychic {
+  @include background(#ffb1b1, #5b5bf6);
+}
+
+.ghost {
+  @include background(#ffffff, #e0e0e0);
+}
+
+.rock {
+  @include background(#959595, #575757);
+}
+
+.fighting {
+  @include background(#99ffe9, #27817d);
+}
+
+.ice {
+  @include background(#cbf9fd, #5bc5f6);
+}
+
+.dragon {
+  @include background(#ffadad, #5dff65);
+}

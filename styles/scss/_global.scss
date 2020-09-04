@@ -1,0 +1,43 @@
+// variables
+$color-primary: #2572ee;
+$header-height: 7rem;
+
+:root {
+  font-size: 62.5%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #2b8dbb;
+    border-radius: 50px;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: #2384b1;
+  }
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.6rem;
+}
+
+@mixin shadow($direction: default) {
+  @if $direction == bottom {
+    box-shadow: 0 1px 5px 0 #22222275;
+  } @else {
+    box-shadow: 0.3rem 0.2rem 0.8rem -2px #22222275;
+  }
+}

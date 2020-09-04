@@ -13,7 +13,7 @@
 
 <h2 id="prints">📷 Screenshot</h2>
 
-<img src="./github/pokedex.png" />
+<img src="./.github/pokedex.png" />
 
 <br />&nbsp;
 
