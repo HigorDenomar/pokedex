@@ -1,6 +1,4 @@
 :root {
-  --color-primary: #2572ee;
-  --header-height: 7rem;
   font-size: 62.5%;
 }
 
@@ -30,14 +28,14 @@ body {
 
 header {
   width: 100%;
-  height: var(--header-height);
+  height: 7rem;
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
-  background: var(--color-primary);
+  background: #2572ee;
   box-shadow: 0 1px 5px 0 #22222275;
   z-index: 5;
 }
@@ -74,10 +72,10 @@ header .wrapper select option {
 main {
   display: flex;
   justify-content: center;
-  margin-top: var(--header-height);
-  height: calc(100vh - var(--header-height));
+  margin-top: 7rem;
+  height: calc(100vh - $header-height);
   background-image: linear-gradient(to right bottom, #2572ee69, #2572ee15);
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 main .container {
   width: 100%;
